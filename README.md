@@ -73,261 +73,24 @@ function SolaraLibrary:CreateWindow(config)
     Username.Name = "Username"
     Username.Text = "@" .. Players.LocalPlayer.Name
     Username.Size = UDim2.new(0, 200, 0, 20)
-    -- Welcome Message
-    local WelcomeGui = Instance.new("ScreenGui")
-    WelcomeGui.Name = "WelcomeGui"
-    WelcomeGui.Parent = CoreGui
-    
-    local WelcomeFrame = Instance.new("Frame")
-    WelcomeFrame.Name = "WelcomeFrame"
-    WelcomeFrame.Size = UDim2.new(0, 300, 0, 150)
-    WelcomeFrame.Position = UDim2.new(0.5, -150, 0.5, -75)
-    WelcomeFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 35)
-    WelcomeFrame.BorderSizePixel = 0
-    WelcomeFrame.Parent = WelcomeGui
-    
-    local WelcomeUICorner = Instance.new("UICorner")
-    WelcomeUICorner.CornerRadius = UDim.new(0, 8)
-    WelcomeUICorner.Parent = WelcomeFrame
-    
-    local WelcomeTitle = Instance.new("TextLabel")
-    WelcomeTitle.Name = "WelcomeTitle"
-    WelcomeTitle.Text = "Welcome to " .. windowName
-    WelcomeTitle.Size = UDim2.new(1, 0, 0, 40)
-    WelcomeTitle.Position = UDim2.new(0, 0, 0.1, 0)
-    WelcomeTitle.BackgroundTransparency = 1
-    WelcomeTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
-    WelcomeTitle.TextSize = 24
-    WelcomeTitle.Font = Enum.Font.GothamBold
-    WelcomeTitle.Parent = WelcomeFrame
-    
-    local WelcomeMessage = Instance.new("TextLabel")
-    WelcomeMessage.Name = "WelcomeMessage"
-    WelcomeMessage.Text = "Loading interface..."
-    WelcomeMessage.Size = UDim2.new(1, 0, 0, 30)
-    WelcomeMessage.Position = UDim2.new(0, 0, 0.5, 0)
-    WelcomeMessage.BackgroundTransparency = 1
-    WelcomeMessage.TextColor3 = Color3.fromRGB(200, 200, 200)
-    WelcomeMessage.TextSize = 16
-    WelcomeMessage.Font = Enum.Font.Gotham
-    WelcomeMessage.Parent = WelcomeFrame
-    
-    -- Animate welcome message
-    WelcomeFrame.BackgroundTransparency = 1
-    WelcomeTitle.TextTransparency = 1
-    WelcomeMessage.TextTransparency = 1
-    
-    createTween(WelcomeFrame, {0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out}, {
-        BackgroundTransparency = 0
-    }):Play()
-    
-    wait(0.2)
-    
-    createTween(WelcomeTitle, {0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out}, {
-        TextTransparency = 0
-    }):Play()
-    
-    wait(0.2)
-    
-    createTween(WelcomeMessage, {0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out}, {
-        TextTransparency = 0
-    }):Play()
-    
-    wait(1.5)
-    
-    createTween(WelcomeFrame, {0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out}, {
-        BackgroundTransparency = 1
-    }):Play()
-    
-    createTween(WelcomeTitle, {0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out}, {
-        TextTransparency = 1
-    }):Play()
-    
-    createTween(WelcomeMessage, {0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out}, {
-        TextTransparency = 1
-    }):Play()
-    
-    wait(0.5)
-    WelcomeGui:Destroy()
-    
-    -- Main GUI Creation
-    local SolaraGUI = Instance.new("ScreenGui")
-    SolaraGUI.Name = "SolaraGUI"
-    SolaraGUI.Parent = CoreGui
-    
-    local MainFrame = Instance.new("Frame")
-    MainFrame.Name = "MainFrame"
-    MainFrame.Size = UDim2.new(0, 600, 0, 400)
-    MainFrame.Position = UDim2.new(0.5, -300, 0.5, -200)
-    MainFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 35)
-    MainFrame.BorderSizePixel = 0
-    MainFrame.Parent = SolaraGUI
-    MainFrame.BackgroundTransparency = 1
-    
-    local UICorner = Instance.new("UICorner")
-    UICorner.CornerRadius = UDim.new(0, 8)
-    UICorner.Parent = MainFrame
-    
-    -- Animate main GUI appearance
-    createTween(MainFrame, {0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out}, {
-        BackgroundTransparency = 0,
-        Position = UDim2.new(0.5, -300, 0.5, -200)
-    }):Play()
-    
-    -- Title Bar with gradient
-    local TitleBar = Instance.new("Frame")
-    TitleBar.Name = "TitleBar"
-    TitleBar.Size = UDim2.new(1, 0, 0, 30)
-    TitleBar.BackgroundColor3 = Color3.fromRGB(40, 40, 45)
-    TitleBar.BorderSizePixel = 0
-    TitleBar.Parent = MainFrame
-    
-    local TitleGradient = Instance.new("UIGradient")
-    TitleGradient.Color = ColorSequence.new({
-        ColorSequenceKeypoint.new(0, Color3.fromRGB(60, 60, 65)),
-        ColorSequenceKeypoint.new(1, Color3.fromRGB(40, 40, 45))
-    })
-    TitleGradient.Parent = TitleBar
-    
-    local TitleText = Instance.new("TextLabel")
-    TitleText.Name = "Title"
-    TitleText.Text = windowName
-    TitleText.Size = UDim2.new(1, -60, 1, 0)
-    TitleText.Position = UDim2.new(0, 10, 0, 0)
-    TitleText.BackgroundTransparency = 1
-    TitleText.TextColor3 = Color3.fromRGB(255, 255, 255)
-    TitleText.TextSize = 16
-    TitleText.Font = Enum.Font.GothamBold
-    TitleText.TextXAlignment = Enum.TextXAlignment.Left
-    TitleText.Parent = TitleBar
-    
-    -- Close and Minimize Buttons with hover effects
-    local CloseButton = Instance.new("TextButton")
-    CloseButton.Name = "CloseButton"
-    CloseButton.Size = UDim2.new(0, 30, 0, 30)
-    CloseButton.Position = UDim2.new(1, -30, 0, 0)
-    CloseButton.BackgroundTransparency = 1
-    CloseButton.Text = "×"
-    CloseButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-    CloseButton.TextSize = 20
-    CloseButton.Font = Enum.Font.GothamBold
-    CloseButton.Parent = TitleBar
-    
-    CloseButton.MouseEnter:Connect(function()
-        createTween(CloseButton, {0.2, Enum.EasingStyle.Quad}, {
-            TextColor3 = Color3.fromRGB(255, 100, 100)
-        }):Play()
-    end)
-    
-    CloseButton.MouseLeave:Connect(function()
-        createTween(CloseButton, {0.2, Enum.EasingStyle.Quad}, {
-            TextColor3 = Color3.fromRGB(255, 255, 255)
-        }):Play()
-    end)
-    
-    local MinimizeButton = Instance.new("TextButton")
-    MinimizeButton.Name = "MinimizeButton"
-    MinimizeButton.Size = UDim2.new(0, 30, 0, 30)
-    MinimizeButton.Position = UDim2.new(1, -60, 0, 0)
-    MinimizeButton.BackgroundTransparency = 1
-    MinimizeButton.Text = "-"
-    MinimizeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-    MinimizeButton.TextSize = 20
-    MinimizeButton.Font = Enum.Font.GothamBold
-    MinimizeButton.Parent = TitleBar
-    
-    MinimizeButton.MouseEnter:Connect(function()
-        createTween(MinimizeButton, {0.2, Enum.EasingStyle.Quad}, {
-            TextColor3 = Color3.fromRGB(200, 200, 200)
-        }):Play()
-    end)
-    
-    MinimizeButton.MouseLeave:Connect(function()
-        createTween(MinimizeButton, {0.2, Enum.EasingStyle.Quad}, {
-            TextColor3 = Color3.fromRGB(255, 255, 255)
-        }):Play()
-    end)
+    Username.Position = UDim2.new(0, 100, 0, 50)
+    Username.BackgroundTransparency = 1
+    Username.TextColor3 = Color3.fromRGB(200, 200, 200)
+    Username.TextSize = 14
+    Username.Font = Enum.Font.Gotham
+    Username.TextXAlignment = Enum.TextXAlignment.Left
+    Username.Parent = ProfileFrame
     
     -- Content Frame
     local ContentFrame = Instance.new("Frame")
     ContentFrame.Name = "ContentFrame"
-    ContentFrame.Size = UDim2.new(1, -20, 1, -40)
-    ContentFrame.Position = UDim2.new(0, 10, 0, 35)
+    ContentFrame.Size = UDim2.new(1, -20, 1, -120)
+    ContentFrame.Position = UDim2.new(0, 10, 0, 110)
     ContentFrame.BackgroundTransparency = 1
     ContentFrame.Parent = MainFrame
     
-    -- Make window draggable with smooth dragging
-    local dragging = false
-    local dragStart = nil
-    local startPos = nil
-    local dragTween = nil
-    
-    TitleBar.InputBegan:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseButton1 then
-            dragging = true
-            dragStart = input.Position
-            startPos = MainFrame.Position
-            
-            if dragTween then
-                dragTween:Cancel()
-            end
-        end
-    end)
-    
-    UserInputService.InputChanged:Connect(function(input)
-        if dragging and input.UserInputType == Enum.UserInputType.MouseMovement then
-            local delta = input.Position - dragStart
-            local targetPosition = UDim2.new(
-                startPos.X.Scale,
-                startPos.X.Offset + delta.X,
-                startPos.Y.Scale,
-                startPos.Y.Offset + delta.Y
-            )
-            
-            dragTween = createTween(MainFrame, {0.1, Enum.EasingStyle.Quad}, {
-                Position = targetPosition
-            })
-            dragTween:Play()
-        end
-    end)
-    
-    UserInputService.InputEnded:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseButton1 then
-            dragging = false
-        end
-    end)
-    
-    -- Close and Minimize functionality with animations
-    local minimized = false
-    local originalSize = MainFrame.Size
-    
-    CloseButton.MouseButton1Click:Connect(function()
-        createTween(MainFrame, {0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out}, {
-            BackgroundTransparency = 1,
-            Position = UDim2.new(0.5, -300, 1.5, -200)
-        }):Play()
-        wait(0.5)
-        SolaraGUI:Destroy()
-    end)
-    
-    MinimizeButton.MouseButton1Click:Connect(function()
-        minimized = not minimized
-        if minimized then
-            createTween(MainFrame, {0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out}, {
-                Size = UDim2.new(0, 600, 0, 30)
-            }):Play()
-            ContentFrame.Visible = false
-        else
-            createTween(MainFrame, {0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out}, {
-                Size = originalSize
-            }):Play()
-            ContentFrame.Visible = true
-        end
-    end)
-    
     local window = {}
     
-    -- Enhanced Toggle with animations
     function window:CreateToggle(config)
         config = config or {}
         local name = config.Name or "Toggle"
@@ -378,6 +141,7 @@ function SolaraLibrary:CreateWindow(config)
         ToggleText.Parent = ToggleFrame
         
         local enabled = default
+        
         local function updateToggle()
             if enabled then
                 createTween(ToggleButton, {0.3, Enum.EasingStyle.Quad}, {
@@ -402,21 +166,9 @@ function SolaraLibrary:CreateWindow(config)
             updateToggle()
         end)
         
-        -- Keyboard shortcut
-        local shortcutKey = config.Shortcut
-        if shortcutKey then
-            UserInputService.InputBegan:Connect(function(input)
-                if input.KeyCode == shortcutKey and not UserInputService:GetFocusedTextBox() then
-                    enabled = not enabled
-                    updateToggle()
-                end
-            end)
-        end
-        
         updateToggle()
     end
     
-    -- Enhanced Slider with direct input
     function window:CreateSlider(config)
         config = config or {}
         local name = config.Name or "Slider"
@@ -494,17 +246,13 @@ function SolaraLibrary:CreateWindow(config)
         UICorner4.CornerRadius = UDim.new(1, 0)
         UICorner4.Parent = SliderKnob
         
-        local function updateSlider(value, skipTween)
+        local function updateSlider(value)
             value = math.clamp(value, min, max)
             local percent = (value - min) / (max - min)
             
-            if skipTween then
-                SliderFill.Size = UDim2.new(percent, 0, 1, 0)
-            else
-                createTween(SliderFill, {0.2, Enum.EasingStyle.Quad}, {
-                    Size = UDim2.new(percent, 0, 1, 0)
-                }):Play()
-            end
+            createTween(SliderFill, {0.2, Enum.EasingStyle.Quad}, {
+                Size = UDim2.new(percent, 0, 1, 0)
+            }):Play()
             
             ValueBox.Text = tostring(math.round(value))
             callback(value)
@@ -542,10 +290,9 @@ function SolaraLibrary:CreateWindow(config)
             end
         end)
         
-        updateSlider(default, true)
+        updateSlider(default)
     end
     
-    -- Enhanced Dropdown with smooth animations
     function window:CreateDropdown(config)
         config = config or {}
         local name = config.Name or "Dropdown"
