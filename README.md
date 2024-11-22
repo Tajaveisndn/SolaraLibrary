@@ -487,7 +487,7 @@ function tabcontent:Button(text, callback)
 
     Button.MouseButton1Click:Connect(
         function()
-            if text == "Fechar GUI" then
+            if text == "Close Menu" then
                 ui:Destroy()
             else
                 pcall(callback)
